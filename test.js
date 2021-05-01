@@ -142,13 +142,14 @@ test('translate via custom tld', async t => {
     t.false(res.from.text.didYouMean);
 });
 
-test('translate via an external language from outside of the API', async t => {
-    translate.languages['sr-Latn'] = 'Serbian Latin';
-    const res = await translate('translator', {to: 'sr-Latn'});
+// NOT SUPPORTED BY v1 API
+// test('translate via an external language from outside of the API', async t => {
+//     translate.languages['sr-Latn'] = 'Serbian Latin';
+//     const res = await translate('translator', {to: 'sr-Latn'});
 
-    t.is(res.text, 'преводилац');
-    t.is(res.from.language.iso, 'en');
-});
+//     t.is(res.text, 'преводилац');
+//     t.is(res.from.language.iso, 'en');
+// });
 
 test('pass got options', async t => {
     let a = 0;
@@ -165,7 +166,7 @@ test('pass got options', async t => {
     const res = await translate('vertaler', {}, gotopts);
 
     t.is(res.text, 'translator');
-    t.is(a, 2);
+    t.is(a, 1);
 });
 
 test('test get zh code', t => {
